@@ -2,8 +2,8 @@ import importlib.resources
 import sys
 import os 
 import streamlit as st
-from industrial_prod.download import download_indu_data, indu_data_for_2024, indu_data_for_2000
-from industrial_prod.plots import plot_indu_prod, plot_indu_prod_2024, plot_indu_prod_2000
+from download import download_indu_data, indu_data_for_2024, indu_data_for_2000
+from plots import plot_indu_prod, plot_indu_prod_2024, plot_indu_prod_2000
 from streamlit_option_menu import option_menu
 
 
