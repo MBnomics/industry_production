@@ -1,0 +1,17 @@
+[project]
+name = "industrial-prod"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dbnomics>=1.2.5",
+    "ipykernel>=6.29.5",
+    "nbformat>=5.10.4",
+    "pandas>=2.2.3",
+    "pip>=24.3.1",
+    "plotly>=5.24.1",
+    "polars>=1.17.1",
+    "streamlit-option-menu>=0.4.0",
+    "streamlit>=1.41.0",
+]
