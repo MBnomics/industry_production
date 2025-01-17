@@ -90,10 +90,20 @@ def download_indu_data():
         },
     )
 
-    df_indu = data_indu[["original_period", "value", "Geopolitical entity (reporting)"]].rename(
-    columns=({"original_period":"Years - Quarters","Geopolitical entity (reporting)":"Countries","value" : "Industrial Production"})
+    df_indu = data_indu[
+        ["original_period", "value", "Geopolitical entity (reporting)"]
+    ].rename(
+        columns=(
+            {
+                "original_period": "Years - Quarters",
+                "Geopolitical entity (reporting)": "Countries",
+                "value": "Industrial Production",
+            }
+        )
     )
-    df_indu["Years - Quarters"] = pd.PeriodIndex(df_indu["Years - Quarters"], freq='Q').to_timestamp()
+    df_indu["Years - Quarters"] = pd.PeriodIndex(
+        df_indu["Years - Quarters"], freq="Q"
+    ).to_timestamp()
     return df_indu
 
 
@@ -101,6 +111,7 @@ def indu_data_for_2024(df_indu):
     data_2024 = df_indu[df_indu["Years - Quarters"] == "2024-Q2"]
 
     return data_2024
+
 
 def indu_data_total_2024(data_2024):
     total_row = pd.DataFrame(
@@ -116,3 +127,9 @@ def indu_data_total_2024(data_2024):
     data_tot = pd.concat([data_2024, total_row])
 
     return data_tot
+
+
+def indu_data_for_2000(df_indu):
+    data_2000 = df_indu[df_indu["Years - Quarters"] == "2000-Q2"]
+
+    return data_2000

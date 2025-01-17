@@ -20,6 +20,15 @@ def plot_indu_prod_2024(data_2024):
         data_2024,
         values="Industrial Production",
         names= "Countries",
-        title="Industrial Production of European Continent for 2024",
+        title="2024 - Industrial Production of European Continent",
+    )
+    return fig
+
+def plot_indu_prod_2000(data_2000):
+    fig = px.pie(
+        data_2000,
+        values="Industrial Production",
+        names= "Countries",
+        title="2000 - Industrial Production of European Continent",
     )
     return fig
