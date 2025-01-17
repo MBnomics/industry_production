@@ -130,6 +130,7 @@ def indu_data_total_2024(data_2024):
 
 
 def indu_data_for_2000(df_indu):
+    
     data_2000 = df_indu[df_indu["Years - Quarters"] == "2000-Q2"]
 
     return data_2000
