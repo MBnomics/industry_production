@@ -83,11 +83,11 @@ def main() -> None:
         with tab3:
             st.header("Share (%) per Country")
             col1, col2 = st.columns(2)
-            with col1:
+            with col2:
                 fig_2024 = plot_indu_prod_2024(data_indu_2024)
                 st.plotly_chart(fig_2024)
 
-            with col2:
+            with col1:
                 fig_2000 = plot_indu_prod_2000(data_indu_2000)
                 st.plotly_chart(fig_2000)
 
