@@ -1,15 +1,21 @@
-import numpy as np 
 import importlib.resources
+import os
 import sys
-import os 
+
+import numpy as np
 import streamlit as st
-from download import download_indu_data, indu_data_for_2024, indu_data_for_2000
-from plots import plot_indu_prod, plot_indu_prod_2024, plot_indu_prod_2000, plot_indu_prod_per_country
+from download import download_indu_data, indu_data_for_2000, indu_data_for_2024
+from plots import (
+    plot_indu_prod,
+    plot_indu_prod_2000,
+    plot_indu_prod_2024,
+    plot_indu_prod_per_country,
+)
 from streamlit_option_menu import option_menu
 
 
 def main() -> None:
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
     package_dir = importlib.resources.files("industrial_prod")
 
     st.set_page_config(
@@ -56,7 +62,9 @@ def main() -> None:
         data_indu_2024 = indu_data_for_2024(data_indu)
         data_indu_2000 = indu_data_for_2000(data_indu)
 
-        tab1, tab2, tab3 = st.tabs(["Global Evolution", "Evolution per Country", "Between 2000 & 2024"])
+        tab1, tab2, tab3 = st.tabs(
+            ["Global Evolution", "Evolution for each Country", "Between 2000 & 2024"]
+        )
 
         with tab1:
             fig = plot_indu_prod(data_indu)
@@ -65,16 +73,17 @@ def main() -> None:
             country = np.unique(data_indu["Country"])
 
             selected_country = st.selectbox(
-                "Select a country :", country, 
-                index = 0, 
+                "Select a country :",
+                country,
+                index=0,
             )
 
             fig_country = plot_indu_prod_per_country(data_indu, selected_country)
             st.plotly_chart(fig_country)
         with tab3:
+            st.header("Share (%) per Country")
             col1, col2 = st.columns(2)
             with col1:
-
                 fig_2024 = plot_indu_prod_2024(data_indu_2024)
                 st.plotly_chart(fig_2024)
 
