@@ -1,9 +1,10 @@
+import numpy as np 
 import importlib.resources
 import sys
 import os 
 import streamlit as st
 from download import download_indu_data, indu_data_for_2024, indu_data_for_2000
-from plots import plot_indu_prod, plot_indu_prod_2024, plot_indu_prod_2000
+from plots import plot_indu_prod, plot_indu_prod_2024, plot_indu_prod_2000, plot_indu_prod_per_country
 from streamlit_option_menu import option_menu
 
 
@@ -48,25 +49,38 @@ def main() -> None:
             menu_icon=":",
             default_index=0,
         )
+    if selected == "Explanations":
+        st.write("Work in progress...")
     if selected == "Industrial Production":
-
         data_indu = download_indu_data()
         data_indu_2024 = indu_data_for_2024(data_indu)
         data_indu_2000 = indu_data_for_2000(data_indu)
 
+        tab1, tab2, tab3 = st.tabs(["Global Evolution", "Evolution per Country", "Between 2000 & 2024"])
 
-        fig = plot_indu_prod(data_indu)
-        st.plotly_chart(fig)
+        with tab1:
+            fig = plot_indu_prod(data_indu)
+            st.plotly_chart(fig)
+        with tab2:
+            country = np.unique(data_indu["Country"])
 
-        col1, col2 = st.columns(2)
-        with col1:
-            
-            fig_2024 = plot_indu_prod_2024(data_indu_2024)
-            st.plotly_chart(fig_2024)
+            selected_country = st.selectbox(
+                "Select a country :", country, 
+                index = 0, 
+            )
 
-        with col2:
-            fig_2000 = plot_indu_prod_2000(data_indu_2000)
-            st.plotly_chart(fig_2000)
+            fig_country = plot_indu_prod_per_country(data_indu, selected_country)
+            st.plotly_chart(fig_country)
+        with tab3:
+            col1, col2 = st.columns(2)
+            with col1:
+
+                fig_2024 = plot_indu_prod_2024(data_indu_2024)
+                st.plotly_chart(fig_2024)
+
+            with col2:
+                fig_2000 = plot_indu_prod_2000(data_indu_2000)
+                st.plotly_chart(fig_2000)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import plotly.express as px
 import plotly.graph_objects as go
+import numpy as np 
 
 
 def plot_indu_prod(df_indu):
@@ -8,18 +9,30 @@ def plot_indu_prod(df_indu):
         df_indu[df_indu["Years - Quarters"] >= "2000-Q1"],
         x="Years - Quarters",
         y="Industrial Production",
-        color="Countries",
+        color="Country",
         title="Industrial Production",
     )
 
     return fig
 
+def plot_indu_prod_per_country(df_indu, country): 
+
+        df_indu_filtred = df_indu[df_indu["Country"] == country]
+        fig = go.Figure()
+        fig = px.line(
+            df_indu_filtred,
+            x="Years - Quarters",
+            y="Industrial Production",
+            color= "Country",
+            title= f"Industrial Production for {country}",
+        )
+        return fig 
 
 def plot_indu_prod_2024(data_2024):
     fig = px.pie(
         data_2024,
         values="Industrial Production",
-        names= "Countries",
+        names= "Country",
         title="2024 - Industrial Production of European Continent",
     )
     return fig
@@ -28,7 +41,7 @@ def plot_indu_prod_2000(data_2000):
     fig = px.pie(
         data_2000,
         values="Industrial Production",
-        names= "Countries",
+        names= "Country",
         title="2000 - Industrial Production of European Continent",
     )
     return fig

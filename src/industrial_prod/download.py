@@ -96,7 +96,7 @@ def download_indu_data():
         columns=(
             {
                 "original_period": "Years - Quarters",
-                "Geopolitical entity (reporting)": "Countries",
+                "Geopolitical entity (reporting)": "Country",
                 "value": "Industrial Production",
             }
         )
@@ -118,7 +118,7 @@ def indu_data_total_2024(data_2024):
         [
             {
                 "Years - Quarters": "Total",
-                "Countries": "Total",
+                "Country": "Total",
                 "Industrial Production": data_2024["Industrial Production"].sum(),
             }
         ]
