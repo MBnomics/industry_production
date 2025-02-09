@@ -61,8 +61,7 @@ def main() -> None:
         )
     if selected == "Explanations":
         st.write(
-            "**DB-NOMICS** is an economic \"toolbox\" that provides simplified and automated access to time series data across various fields, such as finance, energy, and trade. This open source database allows for the exploration of economic transformations for retrieving, updating, and analyzing data."
-            "In this context, we chose to study the evolution of industrial production in Europe between 2000 and 2024. This geographic focus highlights the contrasting dynamics between major industrial economies, such as Germany and Italy, and emerging countries in Eastern Europe.")
+            "This dashboard presents the evolution of industrial production in Europe between 2000 and 2024. This geographic focus highlights the contrasting dynamics between major industrial economies, such as Germany and Italy, and emerging countries in Eastern Europe.")
         st.write(
             "The analyzed period is marked by significant economic events: the technological boom of the 2000s, the 2008 financial crisis, and the disruptions caused by the COVID-19 pandemic in 2020." 
             "The presented charts illustrate both absolute production variations and the shifts in the respective shares of European countries, thereby revealing the structural transformations in Europe's industrial landscape."
